@@ -5,7 +5,7 @@ Task::Task(uint64_t repeatDelay, uint64_t lastRun, std::function<void(uint64_t)>
 : delay(repeatDelay), prev(lastRun), func(function) {}
 
 void Scheduler::schedule(int key, uint64_t repeatDelay, std::function<void(uint64_t)> task, bool runImmediately) {
-    if (tasks.find(key) == tasks.end()) {
+    if (tasks.find(key) != tasks.end()) {
         Serial.printf("Key %d already exists\n", key);
         return;
     }
